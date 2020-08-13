@@ -78,12 +78,13 @@ class linked_list
                 // std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
                 //  std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
                
-               if ( tmp->next->next == NULL) {
-                    std::cout << "Nodo despues de 5 es NULL : " <<std::endl;
-               }
+            //    if ( tmp->next->next == NULL) {
+            //         std::cout << "Nodo despues de 5 es NULL : " <<std::endl;
+            //    }
                
                 
-            
+                
+
                return ;
             }else{
                 n_tracking = n_tracking->next;          
@@ -276,7 +277,7 @@ int main () {
     a.showmeLL();
 
  a.remove(7);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 5" << std::endl;
+     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 7" << std::endl;
     a.showmeLL();
 
 //     a.add_node(2);
