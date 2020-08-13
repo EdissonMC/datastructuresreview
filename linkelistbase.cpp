@@ -1,11 +1,13 @@
 #include <iostream>
 
 /*
-    ESTA ES UNA VERSION ABREVIADA Y FUNCIONAL DE UNA linkedlist  ASCENDENTE 
-    Node1 ->  Node2 -> Node3 
+    ESTA ES UNA VERSION ABREVIADA Y FUNCIONAL DE UNA linkedlist  ASCENDENTE Node1 ->  Node2 -> Node3 
+    
+    THIS IS A BASIC VERSION OF linkedlist  LIKE Node1 ->  Node2 -> Node3 
+    
 */
 
-
+// GENERAL STRUCTURE OF THE NODE
 struct node
 {
     int data;
@@ -44,10 +46,12 @@ class linked_list
 
     }
 
+    // Return the curren head-node
     node* getHead() const{
         return head;
     }
 
+    // Check if especific data is inside the linked list
     bool exist(int dataSearch) {
 
         node *tmp = new node;
@@ -70,7 +74,9 @@ class linked_list
     }
 
 
-    bool remove(int dataSearch) {
+
+    // remove node with the especific dataToRemove 
+    bool remove(int dataToRemove) {
 
         node *tmp = new node;
         tmp = getHead();
@@ -82,7 +88,7 @@ class linked_list
         while (tmp != NULL){
              //std::cout << tmp-> data << std::endl;
 
-            if (tmp->data== dataSearch){
+            if (tmp->data== dataToRemove){
                 
                 std::cout << tmp-> data << " * SI ESTA  -> BORRANDO *" << std::endl;
 
@@ -117,7 +123,7 @@ class linked_list
         return false;
     }
 
-
+    // Show all de data-nodes on screen
     void showmeLL()
     {
 
