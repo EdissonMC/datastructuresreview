@@ -34,21 +34,61 @@ class linked_list
 
         node *tmp = new node;
         tmp->data = newData;
-        
+        tmp->next = NULL;
+
+        node *n_tracking = new node;
+        n_tracking=head;
+
+
         // looking for  next position for newData
-        while (tmp->next->data < newData){
+        while (n_tracking != NULL ){
             
-            std::cout << tmp-> data << std::endl;
+            std::cout << "iterando :"<< n_tracking-> data << std::endl;
 
             // if (tmp->data > newData){
             //      std::cout << tmp-> data << " * SI ESTA *" << std::endl;
               
             // }
-           
 
-            tmp = tmp->next;
+            if (n_tracking->next != NULL &&   n_tracking->next->data  >= newData){
+                
+                
+                std::cout << "NodoNuevo : " <<  tmp << " data :" << tmp->data << std::endl;
+                
+                std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
+                std::cout << "Nodo_tracking apunta a : " <<  n_tracking->next << " data :" << n_tracking->next->data << std::endl;
+                
+                std::cout << "\n <- Anadiendo el nuevo nodo -> " <<std::endl;
+                
+
+                tmp->next = n_tracking->next;      // REAPUNTANDO tail AL NUEVO NODO
+                std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
+                std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
+                
+
+                n_tracking->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+                std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
+                std::cout << "Nodo_tracking ahora apunta a adrress :"<< n_tracking->next << " data: " << n_tracking->next->data  <<std::endl;
+                
+                std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
+                 std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
+               
+               if ( tmp->next->next == NULL) {
+                    std::cout << "Nodo despues de 5 es NULL : " <<std::endl;
+               }
+               
+                
+                
+
+               return ;
+            }else{
+                n_tracking = n_tracking->next;          
+            }
+
+        
         }
         
+        std::cout <<"anadiendo el nodo inicial solamente"<< std::endl;
 
         if( head ==NULL ) {
             head = tmp;
@@ -58,11 +98,18 @@ class linked_list
             tail = tail->next;      // REAPUNTANDO tail AL NUEVO NODO
         }
 
+
     }
+
+
+
 
     node* getHead() const{
         return head;
     }
+
+
+
 
     bool exist(int dataSearch) {
 
@@ -84,6 +131,8 @@ class linked_list
          std::cout  << " * NO ESTA *" << std::endl;
         return false;
     }
+
+
 
 
     bool remove(int dataSearch) {
@@ -139,12 +188,19 @@ class linked_list
 
         node *tmp = new node;
         tmp= getHead();
+        int contador =0;
 
         while (tmp != NULL){
             
-            std::cout << tmp-> data << std::endl;
+            std::cout  << tmp << " data = "<< tmp-> data << "    address next "<<tmp->next << std::endl;
 
             tmp = tmp->next;
+            //  if(contador ==4){
+            
+            //     exit(0);
+
+            //  }
+            contador++;
         }
 
     }
@@ -159,19 +215,7 @@ class linked_list
 
 
 
-void showLL(linked_list & ll){
 
-    node *tmp = new node;
-    tmp= ll.getHead();
-
-    while (tmp != NULL){
-        
-        std::cout << tmp-> data << std::endl;
-
-        tmp = tmp->next;
-    }
-
-}
 
 
 
@@ -180,53 +224,87 @@ void showLL(linked_list & ll){
 
 int main () {
 
+    
      linked_list a;
+
+    std::cout<<"\n\n\n ANADIENDO  EL 1" << std::endl;
     a.add_node(1);
-    a.add_node(2);
+      std::cout<<"\n\n\n MOSTRANDO TODA LA LINKEDLIST  -----------  " << std::endl;
+     a.showmeLL();
+
+
+    std::cout<<"\n\n\n ANADIENDO  EL 3" << std::endl;
     a.add_node(3);
+  std::cout<<"\n\n\n MOSTRANDO TODA LA LINKEDLIST  -----------  " << std::endl;
+     a.showmeLL();
+
+
+    std::cout<<"\n\n\n ANADIENDO  EL 5" << std::endl;
+    a.add_node(5);
+    std::cout<<"\n\n\n MOSTRANDO TODA LA LINKEDLIST  -----------  " << std::endl;
+     a.showmeLL();
+
+
+    std::cout<<"\n\n\n ANADIENDO  EL 4" << std::endl;
+    a.add_node(4);
+
+  std::cout<<"\n\n\n ANADIENDO  EL 43" << std::endl;
     a.add_node(43);
-     a.add_node(24);
 
-     a.remove(1);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+  std::cout<<"\n\n\n ANADIENDO  EL 22" << std::endl;
+    a.add_node(22);
+
+      std::cout<<"\n\n\n ANADIENDO  EL 7" << std::endl;
+    a.add_node(7);
+
+     std::cout<<"\n\n\n MOSTRANDO TODA LA LINKEDLIST  -----------  " << std::endl;
      a.showmeLL();
 
-    a.add_node(84);
-    std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 84 DE LL" << std::endl;
-    a.showmeLL();
+//     a.add_node(2);
+//     a.add_node(3);
+//     a.add_node(43);
+//      a.add_node(24);
+
+//      a.remove(1);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
+
+//     a.add_node(84);
+//     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 84 DE LL" << std::endl;
+//     a.showmeLL();
 
 
-  a.remove(2);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
-     a.showmeLL();
+//   a.remove(2);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
 
-  a.remove(43);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
-     a.showmeLL();
+//   a.remove(43);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
 
-  a.remove(84);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
-     a.showmeLL();
+//   a.remove(84);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
 
-  a.remove(3);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
-     a.showmeLL();
+//   a.remove(3);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
 
-       a.remove(24);
-     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
-     a.showmeLL();
+//        a.remove(24);
+//      std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+//      a.showmeLL();
 
-    a.add_node(84);
-    std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 84 DE LL" << std::endl;
-    a.showmeLL();
+//     a.add_node(84);
+//     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 84 DE LL" << std::endl;
+//     a.showmeLL();
 
-   a.add_node(25);
-    std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 25 DE LL" << std::endl;
-    a.showmeLL();
+//    a.add_node(25);
+//     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS CON 25 DE LL" << std::endl;
+//     a.showmeLL();
 
     // showLL(a);
     // CHQUEANDO SI UN DATO EXISTE
-    a.exist(25);
+    // a.exist(25);
 
     return 0;
 }

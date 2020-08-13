@@ -35,6 +35,7 @@ class linked_list
     void add_node(int n) {
         node *temporal = new node;
         temporal->data =n;
+        temporal->next=NULL;
         
         if( head ==NULL ) {
             head = temporal;
