@@ -30,19 +30,31 @@ class linked_list
         tail=NULL;
     }
 
-    void add_node(int n) {
+    void add_node(int newData) {
 
-        node *temporal = new node;
-        temporal->data =n;
+        node *tmp = new node;
+        tmp->data = newData;
         
-        
+        // looking for  next position for newData
+        while (tmp->next->data < newData){
+            
+            std::cout << tmp-> data << std::endl;
 
+            // if (tmp->data > newData){
+            //      std::cout << tmp-> data << " * SI ESTA *" << std::endl;
+              
+            // }
+           
+
+            tmp = tmp->next;
+        }
+        
 
         if( head ==NULL ) {
-            head = temporal;
-            tail = temporal;
+            head = tmp;
+            tail = tmp;
         }else {
-            tail->next = temporal; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            tail->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
             tail = tail->next;      // REAPUNTANDO tail AL NUEVO NODO
         }
 
