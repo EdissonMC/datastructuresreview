@@ -257,8 +257,23 @@ int main () {
       std::cout<<"\n\n\n ANADIENDO  EL 7" << std::endl;
     a.add_node(7);
 
+
+
      std::cout<<"\n\n\n MOSTRANDO TODA LA LINKEDLIST  -----------  " << std::endl;
      a.showmeLL();
+
+     a.remove(1);
+     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 1" << std::endl;
+    a.showmeLL();
+
+
+  a.remove(5);
+     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 5" << std::endl;
+    a.showmeLL();
+
+ a.remove(7);
+     std::cout<<"\n\n\n MOSTRANDO LOS ELEMENTOS DESPUES DE BORRAR EL 5" << std::endl;
+    a.showmeLL();
 
 //     a.add_node(2);
 //     a.add_node(3);
