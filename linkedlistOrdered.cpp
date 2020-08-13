@@ -1,8 +1,13 @@
 #include <iostream>
 
 /*
-    ESTA ES UNA VERSION ABREVIADA Y FUNCIONAL DE UNA linkedlist  ASCENDENTE 
-    Node1 ->  Node2 -> Node3 
+    ESTA ES UNA VERSION ABREVIADA Y FUNCIONAL DE UNA linkedlist  ASCENDENTE ORDENADA
+    QUE PERMITE ANADIR NUEVOS NODOS Y ESTOS SERAN LOCALIZADOS SEGUN EL VALOR QUE ALOJAN.
+
+    THIS IS A SHORT AND FUNCTIONAL VERSION OF AN ORDERED ASCENDING linkedlist
+    THAT ALLOWS TO ADD NEW NODES AND THESE WILL BE LOCATED ACCORDING TO THE VALUE THAT THEY HOLD.
+
+    Node1(1) ->  Node2(2) -> Node3(3) 
 */
 
 
@@ -53,33 +58,32 @@ class linked_list
             if (n_tracking->next != NULL &&   n_tracking->next->data  >= newData){
                 
                 
-                std::cout << "NodoNuevo : " <<  tmp << " data :" << tmp->data << std::endl;
+                // std::cout << "NodoNuevo : " <<  tmp << " data :" << tmp->data << std::endl;
                 
-                std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
-                std::cout << "Nodo_tracking apunta a : " <<  n_tracking->next << " data :" << n_tracking->next->data << std::endl;
+                // std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
+                // std::cout << "Nodo_tracking apunta a : " <<  n_tracking->next << " data :" << n_tracking->next->data << std::endl;
                 
-                std::cout << "\n <- Anadiendo el nuevo nodo -> " <<std::endl;
+                // std::cout << "\n <- Anadiendo el nuevo nodo -> " <<std::endl;
                 
 
                 tmp->next = n_tracking->next;      // REAPUNTANDO tail AL NUEVO NODO
-                std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
-                std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
+                // std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
+                // std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
                 
 
                 n_tracking->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
-                std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
-                std::cout << "Nodo_tracking ahora apunta a adrress :"<< n_tracking->next << " data: " << n_tracking->next->data  <<std::endl;
+                // std::cout << "\nNodo_tracking : " <<  n_tracking << " data :" << n_tracking->data << std::endl;
+                // std::cout << "Nodo_tracking ahora apunta a adrress :"<< n_tracking->next << " data: " << n_tracking->next->data  <<std::endl;
                 
-                std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
-                 std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
+                // std::cout << "\nNodoNuevo actual : " <<  tmp << " data :" << tmp->data << std::endl;  
+                //  std::cout << "NodoNuevo ahora apunta a adrress : " << tmp->next <<   " data: "<< tmp->next->data  <<std::endl;
                
                if ( tmp->next->next == NULL) {
                     std::cout << "Nodo despues de 5 es NULL : " <<std::endl;
                }
                
                 
-                
-
+            
                return ;
             }else{
                 n_tracking = n_tracking->next;          
