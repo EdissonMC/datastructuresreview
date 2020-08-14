@@ -107,7 +107,9 @@ class linked_list
     }
 
 
-
+    void  size(){
+        /*TODO: Do the function for return the current size of the linkedlist */
+    }
 
     node* getHead() const{
         return head;
