@@ -52,20 +52,16 @@ class linked_list
         */
         std::cout << "\n Agregando Nodos \n" ;
 
-       node *root = new node;
-        
+        node *root = new node;
+        // head = root;
+
         if( head == NULL ) { // if LL is empty add newNode to Head
             std::cout << "\n Agregando Nodo ROOT \n" ;
             
-            
-            root->data =2;
-
-            root->dataPoint[0]=3; //<-
-            root->dataPoint[1]=1;
-            root->dataPoint[2]=4;
-            
-          
-
+            root->data = 1;
+            root->dataPoint[0] = 1; //<-
+            root->dataPoint[1] = 1;
+            root->dataPoint[2] = 1;
             root->next=NULL;
             root->before=NULL;
             head = root;
@@ -76,55 +72,81 @@ class linked_list
 
         std::cout << "\n Agregando Nodo 2 \n" ;
         node *nodo2 = new node;
-        nodo2->data = 3;
+        nodo2->data = 2;
         
-        root->dataPoint[0]=2;
-        root->dataPoint[1]=3;//<-
-        root->dataPoint[2]=7;
+        nodo2->dataPoint[0] = 2;
+        nodo2->dataPoint[1] = 2;//<-
+        nodo2->dataPoint[2] = 2;
 
-        nodo2->next=NULL;
-        nodo2->before=NULL;
+        nodo2->next   = NULL;
+        nodo2->before = NULL;
         root->next= nodo2;
 
 
 
-        std::cout << "\n Agregando Nodo 6 \n" ;
+        std::cout << "\n Agregando Nodo 3 \n" ;
         node *nodo3 = new node;
-        nodo3->data = 6;
+        nodo3->data = 3;
         
-        root->dataPoint[0]=2;
-        root->dataPoint[1]=1;
-        root->dataPoint[2]=3;//<-
-        
-        nodo3->next=NULL;
-        nodo3->before=NULL;
-        nodo2->next= nodo3;
+        Point<3> ptPrueba ;
+        ptPrueba[0] =3;
+        ptPrueba[1] =3;
+        ptPrueba[2] =3;
 
-         std::cout << "\n Agregando Nodo 4 \n" ;
+        nodo3->dataPoint =ptPrueba;
+
+        // nodo3->dataPoint[0] = 3;
+        // nodo3->dataPoint[1] = 3;
+        // nodo3->dataPoint[2] = 3;//<-
+        nodo3->next   = NULL;
+        nodo3->before = NULL;
+
+        nodo2->before = nodo3;
+
+
+        std::cout << "\n Agregando Nodo 4 \n" ;
         node *nodo4 = new node;
         nodo4->data = 4;
 
-        root->dataPoint[0]=2;
-        root->dataPoint[1]=4;
-        root->dataPoint[2]=5;//<-
+        nodo4->dataPoint[0] = 4;
+        nodo4->dataPoint[1] = 4;
+        nodo4->dataPoint[2] = 4;//<-
 
         nodo4->next=NULL;
         nodo4->before=NULL;
-        nodo3->before= nodo4;
+        nodo3->next= nodo4;
 
-      std::cout << "\n Agregando Nodo 1 \n" ;
-        node *nodo5 = new node;
-        nodo5->data = -1;
 
-        root->dataPoint[0]=1;
-        root->dataPoint[1]=4;
-        root->dataPoint[2]=4;//<-
 
-        nodo5->next=NULL;
-        nodo5->before=NULL;
-        root->before= nodo5;
+        // std::cout << "\n Agregando Nodo 5 \n" ;
+        // node *nodo5 = new node;
+        // nodo5->data = 5;
 
-         std::cout << "\n TERMINANDO DE AGREGAR NODOS 2 \n" ;
+        // nodo5->dataPoint[0] = 5;
+        // nodo5->dataPoint[1] = 5;
+        // nodo5->dataPoint[2] = 5;//<-
+
+        // nodo5->next   = NULL;
+        // nodo5->before = NULL;
+        // nodo4->before  = nodo5;
+
+
+
+
+        // std::cout << "\n Agregando Nodo 6 \n" ;
+        // node *nodo6 = new node;
+        // nodo6->data = 6;
+
+        // nodo6->dataPoint[0] = 6;
+        // nodo6->dataPoint[1] = 6;
+        // nodo6->dataPoint[2] = 6;//<-
+
+        // nodo6->next   = NULL;
+        // nodo6->before = NULL;
+        // nodo4->next   = nodo6;
+
+        std::cout << "\n TERMINANDO DE AGREGAR NODOS 2 \n" ;
+
     }// End agregarNodos
 
 
@@ -133,15 +155,16 @@ class linked_list
 
 
 
-    void add_node(int newData) {
-
+    void add_node(int newData, Point<3> pointNew) {
+         std::cout << " INICIANDO add_node -------------------------------------------\n ";
         // CREATING New_Node
         node *tmp = new node;
         tmp->data = newData;
+        tmp->dataPoint = pointNew;
         tmp->next   = NULL;
         tmp->before = NULL;
 
-
+         
         // CREATING Node_Tracking
         node *n_tracking = new node;
         
@@ -151,21 +174,44 @@ class linked_list
         // CREATING NODO BACKUP
         node *n_back = new node;
         n_back=NULL;
+       
+        int indice = 0;
+        int indicePoint= indice%3;
+         int comparadorComponente ;
+         int newPointComponente;
+        if (n_tracking!= NULL){
+              comparadorComponente = n_tracking->dataPoint[indicePoint];
 
-
+            //std::cout << " DEBUGIN add_node 1 -------------------------------------------\n ";
+    
+             newPointComponente = pointNew[indicePoint];
+        }else{
+           // std::cout << " DEBUGIN add_node 2 -------------------------------------------\n ";
+                comparadorComponente =0;
+               newPointComponente =0;
+        }
+       
+       
         // looking for  next position for newData
         while (n_tracking != NULL ){
             
-            std::cout << "iterando en :"<< n_tracking-> data << std::endl;
+            
+            indicePoint= indice%3;
+            std::cout << "iterando en :> "<<  n_tracking->dataPoint[indicePoint] << "  indice de Posicion:> "<< indicePoint <<std::endl;
+            
+            comparadorComponente = n_tracking->dataPoint[indicePoint];
+            newPointComponente = pointNew[indicePoint];
+            //comparadorComponente =n_tracking-> data;
 
-            if (newData >=n_tracking-> data){ // RIGHT
+            if (newPointComponente >= comparadorComponente) { // RIGHT
+
 
                 std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
                 n_back     = n_tracking;
                 n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
             
 
-            }else  if (newData < n_tracking-> data) { // LEFT
+            }else  if (newPointComponente < comparadorComponente) { // LEFT
 
                 std::cout << " * VAMOS A IZQUIERDA  <-  " << n_tracking-> data  << std::endl;
                 n_back     = n_tracking;
@@ -173,11 +219,15 @@ class linked_list
             
             }
 
-        
+            indice++;
+
         }//end while
 
-        
        
+        indice--;
+        indicePoint = indice%3;
+        newPointComponente = pointNew[indicePoint];
+
         if( head == NULL ) { // if LL is empty add newNode to Head
             std::cout <<"anadiendo nodo :> "<<tmp->data << "  al Nodo ROOT "<< std::endl;
 
@@ -187,15 +237,15 @@ class linked_list
         }else {  // if get to the end of LL then add newNode at the end of the branch
             
            
-            if( newData >= n_back->data){
-                 std::cout <<"anadiendo el Nodo Nuevo -> "<< tmp->data << " a la DERECHA "<< std::endl;
-
-                 n_back->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            if( newPointComponente >= n_back->dataPoint[indicePoint]){
+                 
+                std::cout << "anadiendo el Nodo Nuevo -> "<<  tmp->data  << " a la DERECHA "<< std::endl;
+                n_back->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
            
             }else{
-                 std::cout << tmp->data  <<" <-  anadiendo el Nodo Nuevo a la IZQUIERDA "<< std::endl;
 
-                 n_back->before = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+                std::cout << tmp->data  << " <-  anadiendo el Nodo Nuevo a la IZQUIERDA "<< std::endl;
+                n_back->before = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
            
             }
            
@@ -379,32 +429,61 @@ class linked_list
         node *tmp = root;
 
         std::stringstream converter;
+
+        std::stringstream converterA;
+        std::stringstream converterB;
+        std::stringstream converterC;
+
+        std::string miDatoA="";
+        std::string miDatoB="";
+        std::string miDatoC="";
+
         std::string miDato="";
 
         if (tmp->next ==NULL && tmp->before ==NULL)
         {
             std::cout << "\n>ambos son NULL\n";
-            converter << tmp->data;
-            converter  >>  miDato;
+            
+            converterA << tmp->dataPoint[0];
+            converterA  >>  miDatoA;
+            
+            converterB << tmp->dataPoint[1];
+            converterB  >>  miDatoB;
+            
+            converterC << tmp->dataPoint[2];
+            converterC  >>  miDatoC;
+            
+            miDato = miDatoA + miDatoB + miDatoC;
 
+            // converter << tmp->data;
+            // converter  >>  miDato;
+            // converter.clear();
+           
             return  miDato;
         }
         
+        converterA << tmp->dataPoint[0];
+        converterA  >>  miDatoA;
+        converterB << tmp->dataPoint[1];
+        converterB  >>  miDatoB;
+        converterC << tmp->dataPoint[2];
+        converterC  >>  miDatoC;
 
-        converter << tmp->data;
-        converter  >>  miDato;
+        miDato = miDatoA + miDatoB + miDatoC;
+        // converter << tmp->data;
+        // converter  >>  miDato;
 
-        if (tmp->next !=NULL && tmp->before !=NULL)
+        if (tmp->next != NULL   &&   tmp->before != NULL)
         {
             std::cout << "\n> Tiene datos en cada rama \n";
-            return  showmeAll(tmp->before) + " | "+  miDato + " | "+showmeAll(tmp->next);
+            return  showmeAll(tmp->before) + " | "  +  miDato +  " | "+showmeAll(tmp->next);
         }
-        else if (tmp->next ==NULL && tmp->before !=NULL)
+        else if (tmp->next == NULL && tmp->before != NULL)
         {
             std::cout << "\n> Tiene datos en rama IZQUIERDA \n";
             return    showmeAll(tmp->before)+" | "+ miDato ;
         }
-        else if (tmp->next !=NULL && tmp->before ==NULL)
+        else if (tmp->next != NULL && tmp->before == NULL)
         {
             std::cout << "\n> Tiene datos en rama DERECHA \n";
             return miDato +" | " + showmeAll(tmp->next)    ;
@@ -439,18 +518,105 @@ int main () {
 
      std::cout << "\n INICIANDO PROCESO \n" ;
     
-    ///typedef linked_list <Point<3> > a;
+    //typedef linked_list <Point<3> > a;
       linked_list  a;
    
-    a.agregarNodos();
+    // a.agregarNodos();
     //  std::cout << "\nMOSTRANDO EL RESULTADO \n" << a.showmeAll();
 
 
 
-    /*
-    std::cout << "\n\nANDIENDO EL NUMERO 2 --------------------------------------------------------- \n";
-     a.add_node(2);
     
+    std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
+    Point<3> pointTemp;
+    pointTemp[0]=3;
+    pointTemp[1]=1;
+    pointTemp[2]=4;
+    a.add_node(1, pointTemp);
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2 2 2 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=2;
+    pointTemp[1]=3;
+    pointTemp[2]=7;
+    a.add_node(2, pointTemp);
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 4 3 4 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=4;
+    pointTemp[1]=3;
+    pointTemp[2]=4;
+    a.add_node(3, pointTemp);
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 6 1 4 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=6;
+    pointTemp[1]=1;
+    pointTemp[2]=4;
+    a.add_node(4, pointTemp);
+
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 5 2 5 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=5;
+    pointTemp[1]=2;
+    pointTemp[2]=5;
+    a.add_node(5, pointTemp);
+
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 4 0 6 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=4;
+    pointTemp[1]=0;
+    pointTemp[2]=6;
+    a.add_node(6, pointTemp);
+
+    std::cout << "\n\nANDIENDO EL NUMERO 7 1 6 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=7;
+    pointTemp[1]=1;
+    pointTemp[2]=6;
+    a.add_node(7, pointTemp);
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2 4 5 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=2;
+    pointTemp[1]=4;
+    pointTemp[2]=5;
+    a.add_node(8, pointTemp);
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2 1 3 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=2;
+    pointTemp[1]=1;
+    pointTemp[2]=3;
+    a.add_node(9, pointTemp);
+
+    std::cout << "\n\nANDIENDO EL NUMERO 0 5 7 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=0;
+    pointTemp[1]=5;
+    pointTemp[2]=7;
+    a.add_node(10, pointTemp);
+
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 1 4 4 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=1;
+    pointTemp[1]=4;
+    pointTemp[2]=4;
+    a.add_node(11, pointTemp);
+
+      std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
+
+
+    /*
     std::cout << "\n\nANDIENDO EL NUMERO 3 --------------------------------------------------------- \n";
     a.add_node(3);
     
