@@ -256,7 +256,7 @@ class linked_list
         }
 
 
-    }
+    }// End add_node
 
 
     void  size(){
@@ -268,14 +268,14 @@ class linked_list
     }
 
 
-    // bool exist(int dataToSearch){
+    bool exist(int dataToSearch){
         
-    //     std::cout << "\n>Ingresando a exist(dataToSearch) \n";
-    //     node *root = new node;
-    //     root = getHead();
+        std::cout << "\n>Ingresando a exist(dataToSearch) \n";
+        node *root = new node;
+        root = getHead();
 
-    //     return exist(dataToSearch,  root );
-    // }
+        return exist(dataToSearch,  root );
+    }
 
 
     bool exist(int dataSearch, node* currentNode) {
@@ -403,7 +403,113 @@ class linked_list
     }
     */
 
+    // bool contains(Point<3>& pt) {
+       
+    //     // node *root = head;
+    //     node *root = new node;
+    //     root= getHead();
+        
+    //     std::cout  << "* ESTAMOS EN contains() *" << std::endl;
+    //     return contains(root, pt);
 
+    // }
+
+
+    bool contains( Point<3>& pt ) //node *root,
+    {
+        std::cout << "\n>Ingresando a containsRecursive (Node , Point) ---------------------------------------------------------\n";
+
+       
+    
+        // CREATING New_Node
+        // node *tmp = new node;
+        // tmp->data = newData;
+        // tmp->dataPoint = pointNew;
+        // tmp->next   = NULL;
+        // tmp->before = NULL;
+
+         
+        // CREATING Node_Tracking
+        node *n_tracking = new node;
+        
+        // Pointing Node_Tracking to Node_Root
+        n_tracking=head;
+
+        // CREATING NODO BACKUP
+        node *n_back = new node;
+        n_back=NULL;
+       
+        int indice = 0;
+        int indicePoint= indice%3;
+        int comparadorComponenteNodo ;
+        int comparadorComponentePoint;
+
+
+
+        if (n_tracking!= NULL){
+              comparadorComponenteNodo = n_tracking->dataPoint[indicePoint];
+
+            //std::cout << " DEBUGIN add_node 1 -------------------------------------------\n ";
+    
+             comparadorComponentePoint = pt[indicePoint];
+        }else{
+           // std::cout << " DEBUGIN add_node 2 -------------------------------------------\n ";
+                comparadorComponenteNodo =0;
+               comparadorComponentePoint =0;
+        }
+       
+       
+        // looking for  next position for newData
+        while (n_tracking != NULL ){
+            
+            
+            indicePoint= indice%3;
+            std::cout << "iterando en :> "<<  n_tracking->dataPoint[indicePoint] << "Indice General "<< indice <<"  indice de Posicion Point:> "<< indicePoint <<std::endl;
+            
+
+            comparadorComponenteNodo  =  n_tracking->dataPoint[indicePoint];
+            comparadorComponentePoint =  pt[indicePoint];
+       
+
+            if (comparadorComponentePoint > comparadorComponenteNodo) { // RIGHT
+
+                // if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
+                //     return true;
+                // }else{
+                    std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                    n_back     = n_tracking;
+                    n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+                // }
+
+            
+            
+
+            }else  if (comparadorComponentePoint < comparadorComponenteNodo) { // LEFT
+
+                std::cout << " * VAMOS A IZQUIERDA  <-  " << n_tracking-> data  << std::endl;
+                n_back     = n_tracking;
+                n_tracking = n_tracking->before; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            
+            }else if (comparadorComponentePoint == comparadorComponenteNodo) { // RIGHT
+
+                 if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
+                    return true;
+                 }
+            
+            }
+
+
+            indice++;
+
+        }//end while
+
+
+        return false;
+
+    } // End contains
+    
+
+    
 
     std::string showmeAll() {
         // node *root = head;
@@ -613,7 +719,16 @@ int main () {
     pointTemp[2]=4;
     a.add_node(11, pointTemp);
 
-      std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
+    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
+
+    
+    std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
+    Point<3> pointTest;
+    pointTest[0] = 15;
+    pointTest[1] = 2;
+    pointTest[2] = 15;
+    std::string resultado = (a.contains(pointTest)== true)? "si":"no";
+    std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
 
 
     /*
