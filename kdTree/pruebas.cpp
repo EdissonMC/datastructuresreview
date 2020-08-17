@@ -268,14 +268,14 @@ class linked_list
     }
 
 
-    bool exist(int dataToSearch){
+    // bool exist(int dataToSearch){
         
-        std::cout << "\n>Ingresando a exist(dataToSearch) \n";
-        node *root = new node;
-        root = getHead();
+    //     std::cout << "\n>Ingresando a exist(dataToSearch) \n";
+    //     node *root = new node;
+    //     root = getHead();
 
-        return exist(dataToSearch,  root );
-    }
+    //     return exist(dataToSearch,  root );
+    // }
 
 
     bool exist(int dataSearch, node* currentNode) {
