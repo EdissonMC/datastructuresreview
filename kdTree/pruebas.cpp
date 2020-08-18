@@ -5,6 +5,7 @@
 
 #include "point.h"
 
+#include "KDTree.h"
 
 
 
@@ -115,35 +116,6 @@ class linked_list
         nodo4->next=NULL;
         nodo4->before=NULL;
         nodo3->next= nodo4;
-
-
-
-        // std::cout << "\n Agregando Nodo 5 \n" ;
-        // node *nodo5 = new node;
-        // nodo5->data = 5;
-
-        // nodo5->dataPoint[0] = 5;
-        // nodo5->dataPoint[1] = 5;
-        // nodo5->dataPoint[2] = 5;//<-
-
-        // nodo5->next   = NULL;
-        // nodo5->before = NULL;
-        // nodo4->before  = nodo5;
-
-
-
-
-        // std::cout << "\n Agregando Nodo 6 \n" ;
-        // node *nodo6 = new node;
-        // nodo6->data = 6;
-
-        // nodo6->dataPoint[0] = 6;
-        // nodo6->dataPoint[1] = 6;
-        // nodo6->dataPoint[2] = 6;//<-
-
-        // nodo6->next   = NULL;
-        // nodo6->before = NULL;
-        // nodo4->next   = nodo6;
 
         std::cout << "\n TERMINANDO DE AGREGAR NODOS 2 \n" ;
 
@@ -601,9 +573,9 @@ class linked_list
     } // End showmeAll
     
 
-
-
 }; // End Class
+
+
 
 
 
@@ -722,13 +694,13 @@ int main () {
     std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
 
     
-    std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
-    Point<3> pointTest;
-    pointTest[0] = 15;
-    pointTest[1] = 2;
-    pointTest[2] = 15;
-    std::string resultado = (a.contains(pointTest)== true)? "si":"no";
-    std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
+    // std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
+    // Point<3> pointTest;
+    // pointTest[0] = 15;
+    // pointTest[1] = 2;
+    // pointTest[2] = 15;
+    // std::string resultado = (a.contains(pointTest)== true)? "si":"no";
+    // std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
 
 
     /*
@@ -758,6 +730,40 @@ int main () {
     std::cout << "Resultado(6) = " << resultado ;
     */
 
+   // PROBANDO EL OBJETO KDTree
+    std::cout << "\nPROBANDO EL OBJETO KDTree\n";
+
+    KDTree myKDTree ;
+  //  myKDTree.agregarNodos();
+    // Point<3> pointTemp;
+    std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
+    pointTemp[0]=3;
+    pointTemp[1]=1;
+    pointTemp[2]=4;
+    myKDTree.insert(pointTemp);
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2 3 7 --------------------------------------------------------- \n";
+    //Point<3> pointTemp;
+    pointTemp[0]=2;
+    pointTemp[1]=3;
+    pointTemp[2]=7;
+    myKDTree.insert(pointTemp);
+
+
+
+    std::cout << myKDTree.showmeAll();
+
+
+
+    std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
+    Point<3> pointTest;
+    pointTest[0] = 3;
+    pointTest[1] = 2;
+    pointTest[2] = 4;
+
+    std::string resultado = (myKDTree.contains(pointTest)== true)? "si":"no";
+    std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
 
     // PROBANDO EL OBJETO Point
     /*

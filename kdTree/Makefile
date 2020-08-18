@@ -1,9 +1,11 @@
 output: pruebas.o
 	g++ -o -std=c++17 -Wall pruebas.o -o output
 
-	
-main.o: pruebas.cpp
+pruebas.o: pruebas.cpp
 	g++ -c -std=c++17 -Wall pruebas.cpp
+
+KDTree.o: KDTree.h KDTree.cpp
+	g++ -c -std=c++17 -Wall KDTree.h
 
 point.o: point.h point.cpp
 	g++ -c -std=c++17 -Wall point.h
