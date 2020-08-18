@@ -6,7 +6,7 @@
 
 
 
-
+//template <size_t N, typename ElemType>
 class KDTree
 {   
     private:
@@ -27,7 +27,7 @@ class KDTree
         node *head;
         node *tail;
         Point<3> pt; 
-
+        size_t sizeKDTree ;
 
     public:
 
@@ -38,11 +38,26 @@ class KDTree
         // Constructs an empty KDTree.
         KDTree(/* args */);
 
+
+
         // Destructor: ~KDTree()
         // Usage: (implicit)
         // ----------------------------------------------------
         // Cleans up all resources used by the KDTree.
         ~KDTree();
+
+
+        
+        // size_t size() const;
+        // bool empty() const;
+        // Usage: if (kd.empty())
+        // ----------------------------------------------------
+        // Returns the number of elements in the kd-tree and whether the tree is
+        // empty.
+        size_t size() const;
+        bool empty() const;
+
+
 
 
         // void insert(const Point<N>& pt, const ElemType& value);
@@ -54,6 +69,8 @@ class KDTree
         void insert(const Point<3>& pt);
 
 
+
+
          // bool contains(const Point<N>& pt) const;
         // Usage: if (kd.contains(pt))
         // ----------------------------------------------------
@@ -62,7 +79,28 @@ class KDTree
         bool contains( Point<3>& pt) ;//const
     
 
+        // ElemType& at(const Point<N>& pt);
+        // const ElemType& at(const Point<N>& pt) const;
+        // Usage: cout << kd.at(v) << endl;
+        // ----------------------------------------------------
+        // Returns a reference to the key associated with the point pt. If the point
+        // is not in the tree, this function throws an out_of_range exception.
+        std::string at(const Point<3>& pt);
+        
+        //ElemType& at(const Point<N>& pt);
+        //const ElemType& at(const Point<N>& pt) const;
+
         void agregarNodos();
+
+            
+        // ElemType& operator[](const Point<N>& pt);
+        // Usage: kd[v] = "Some Value";
+        // ----------------------------------------------------
+        // Returns a reference to the value associated with point pt in the KDTree.
+        // If the point does not exist, then it is added to the KDTree using the
+        // default value of ElemType as its key.
+        //ElemType& operator[](const Point<N>& pt);
+        std::string operator[]( Point<3>& pt);
 
     //    node* getHead();
 
@@ -74,12 +112,15 @@ class KDTree
 
 
 
+
+
+
 KDTree::KDTree(/* args */)
 {
     std::cout <<"creating KDTree";
 
   
-
+    sizeKDTree = 0;
     head=NULL;
     tail=NULL;
 
@@ -93,7 +134,7 @@ KDTree::~KDTree()
 void KDTree::insert(const Point<3>& pt)
 {
 
-         std::cout << " INICIANDO add_node -------------------------------------------\n ";
+         std::cout << " INICIANDO insert -------------------------------------------\n ";
         // CREATING New_Node
         node *tmp = new node;
         tmp->data = 0;
@@ -192,14 +233,150 @@ void KDTree::insert(const Point<3>& pt)
         
         }
 
+        // INCREMENTANDO EL TAMANO DE LOS NODOS
+        sizeKDTree++;
+
 
 }// End insert()
 
 
-// KDTree::node* KDTree::getHead() 
-// {
-//     return head;
-// }
+
+
+
+
+
+
+
+std::string KDTree::operator[]( Point<3>& pt) {
+
+        std::cout << " INICIANDO Operator[] -------------------------------------------\n ";
+        
+        // CREATING New_Node
+        node *tmp = new node;
+        tmp->data = 0;
+        tmp->dataPoint = pt;
+        tmp->next   = NULL;
+        tmp->before = NULL;
+
+         
+        // CREATING Node_Tracking
+        node *n_tracking = new node;
+        
+        // Pointing Node_Tracking to Node_Root
+        n_tracking = head;
+
+        // CREATING NODO BACKUP
+        node *n_back = new node;
+        n_back=NULL;
+       
+        int indice = 0;
+        int indicePoint= indice%3;
+         int comparadorComponente ;
+         int newPointComponente;
+
+        if (n_tracking!= NULL){
+              comparadorComponente = n_tracking->dataPoint[indicePoint];
+
+            //std::cout << " DEBUGIN add_node 1 -------------------------------------------\n ";
+    
+             newPointComponente = pt[indicePoint];
+        }else{
+           // std::cout << " DEBUGIN add_node 2 -------------------------------------------\n ";
+                comparadorComponente =0;
+               newPointComponente =0;
+        }
+       
+       
+        // looking for  next position for newData
+        while (n_tracking != NULL ){
+            
+            
+            indicePoint= indice%3;
+            std::cout << "iterando en :> "<<  n_tracking->dataPoint[indicePoint] << "  indice de Posicion:> "<< indicePoint <<std::endl;
+            
+            comparadorComponente = n_tracking->dataPoint[indicePoint];
+            newPointComponente = pt[indicePoint];
+            //comparadorComponente =n_tracking-> data;
+
+            if (newPointComponente > comparadorComponente) { // RIGHT
+
+
+                std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                n_back     = n_tracking;
+                n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            
+
+            }else  if (newPointComponente < comparadorComponente) { // LEFT
+
+                std::cout << " * VAMOS A IZQUIERDA  <-  " << n_tracking-> data  << std::endl;
+                n_back     = n_tracking;
+                n_tracking = n_tracking->before; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            
+            }else if (newPointComponente == comparadorComponente) {
+                 if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
+                   return "YA EXISTE";
+
+                 }else{
+                    // NO ES IGUA? CONTINUAMOS...
+                    std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                    n_back     = n_tracking;
+                    n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            
+                 }
+            
+                
+            }
+
+            indice++;
+
+        }//end while
+
+       
+        // NO EXISTE? ENTONCES AGREGELO 
+        indice--;
+        indicePoint = indice%3;
+        newPointComponente = pt[indicePoint];
+
+        if( head == NULL ) { // if LL is empty add newNode to Head
+            std::cout <<"anadiendo nodo :> "<<   tmp->data  << "  al Nodo ROOT "<< std::endl;
+
+            head = tmp;
+            //tail = tmp;
+
+        }else {  // if get to the end of LL then add newNode at the end of the branch
+            
+           
+            if( newPointComponente >= n_back->dataPoint[indicePoint]){
+                 
+                std::cout << "anadiendo el Nodo Nuevo -> "<<  tmp->data  << " a la DERECHA "<< std::endl;
+                n_back->next = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+           
+            }else{
+
+                std::cout << tmp->data  << " <-  anadiendo el Nodo Nuevo a la IZQUIERDA "<< std::endl;
+                n_back->before = tmp; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+           
+            }
+        
+           
+           
+            //tail = tail->next;      // REAPUNTANDO tail AL NUEVO NODO
+        
+        }
+
+        // INCREMENTANDO EL TAMANO DE LOS NODOS
+           sizeKDTree++;
+
+        return "FUE AGREGADO UN NODO NUEVO";
+    
+}// End  operator[]( Point<3>& pt)
+
+
+
+
+
+
+
 
 void KDTree::agregarNodos(){
         /*
@@ -282,11 +459,16 @@ void KDTree::agregarNodos(){
 
 
 
+
+
+
+
+
   // bool contains(const Point<3>& pt) ;//const
    bool KDTree::contains( Point<3>& pt ) //node *root,
     {
 
-        std::cout << "\n>Ingresando a containsRecursive (Node , Point) ---------------------------------------------------------\n";
+        std::cout << "\n>Ingresando a Contains (Node , Point) ---------------------------------------------------------\n";
 
        
     
@@ -359,10 +541,18 @@ void KDTree::agregarNodos(){
                 n_back     = n_tracking;
                 n_tracking = n_tracking->before; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
             
+
             }else if (comparadorComponentePoint == comparadorComponenteNodo) { // RIGHT
+
 
                  if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
                     return true;
+                 }else{
+                    
+                    std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                    n_back     = n_tracking;
+                    n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+               
                  }
             
             }
@@ -375,11 +565,131 @@ void KDTree::agregarNodos(){
 
         return false;
 
-    } // End contains
+} // End contains
     
 
 
 
+
+
+
+
+std::string KDTree::at(const Point<3>& pt)
+{
+
+
+        std::cout << "\n>Ingresando a at (Node , Point) ---------------------------------------------------------\n";
+
+       
+    
+        // CREATING New_Node
+        // node *tmp = new node;
+        // tmp->data = newData;
+        // tmp->dataPoint = pointNew;
+        // tmp->next   = NULL;
+        // tmp->before = NULL;
+
+         
+        // CREATING Node_Tracking
+        node *n_tracking = new node;
+        
+        // Pointing Node_Tracking to Node_Root
+        n_tracking = head;
+
+        // CREATING NODO BACKUP
+        node *n_back = new node;
+        n_back=NULL;
+       
+        int indice = 0;
+        int indicePoint= indice%3;
+        int comparadorComponenteNodo ;
+        int comparadorComponentePoint;
+
+
+
+        if (n_tracking!= NULL){
+              comparadorComponenteNodo = n_tracking->dataPoint[indicePoint];
+
+            //std::cout << " DEBUGIN add_node 1 -------------------------------------------\n ";
+    
+             comparadorComponentePoint = pt[indicePoint];
+        }else{
+           // std::cout << " DEBUGIN add_node 2 -------------------------------------------\n ";
+                comparadorComponenteNodo =0;
+               comparadorComponentePoint =0;
+        }
+       
+       
+        // looking for  next position for newData
+        while (n_tracking != NULL ){
+            
+            
+            indicePoint= indice%3;
+            std::cout << "iterando en :> "<<  n_tracking->dataPoint[indicePoint] << "Indice General "<< indice <<"  indice de Posicion Point:> "<< indicePoint <<std::endl;
+            
+
+            comparadorComponenteNodo  =  n_tracking->dataPoint[indicePoint];
+            comparadorComponentePoint =  pt[indicePoint];
+       
+
+            if (comparadorComponentePoint > comparadorComponenteNodo) { // RIGHT
+
+                // if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
+                //     return true;
+                // }else{
+                    std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                    n_back     = n_tracking;
+                    n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+                // }
+
+            
+            
+
+            }else  if (comparadorComponentePoint < comparadorComponenteNodo) { // LEFT
+
+                std::cout << " * VAMOS A IZQUIERDA  <-  " << n_tracking-> data  << std::endl;
+                n_back     = n_tracking;
+                n_tracking = n_tracking->before; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+            
+
+            }else if (comparadorComponentePoint == comparadorComponenteNodo) { // RIGHT
+
+
+                 if(pt[0] == n_tracking->dataPoint[0]   &&   pt[1] == n_tracking->dataPoint[1]  && pt[2] == n_tracking->dataPoint[2] ) {
+                    return " REFERENCIA DENTRO DEL NODO ";
+                
+                 }else{
+                    
+                    std::cout << n_tracking-> data << "       -> VAMOS A LA DERECHA *" << std::endl;
+                    n_back     = n_tracking;
+                    n_tracking = n_tracking->next; // APUNTANDO EL NEXT DEL ULTIMO NODO AL NUEVO NODO
+               
+                 }
+            
+            }
+
+
+            indice++;
+
+        }//end while
+
+
+        return "ERROR ";
+
+} // End at(const Point<3>& pt)
+
+
+
+
+
+
+size_t KDTree::size() const {
+    return sizeKDTree;
+}
+
+bool KDTree::empty() const{
+   return  (sizeKDTree==0)? true : false;
+}
 
 std::string KDTree::showmeAll() 
 {

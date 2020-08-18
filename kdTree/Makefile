@@ -5,10 +5,10 @@ pruebas.o: pruebas.cpp
 	g++ -c -std=c++17 -Wall pruebas.cpp
 
 KDTree.o: KDTree.h KDTree.cpp
-	g++ -c -std=c++17 -Wall KDTree.h
+	g++ -c -std=c++17 -Wall KDTree.cpp
 
 point.o: point.h point.cpp
-	g++ -c -std=c++17 -Wall point.h
+	g++ -c -std=c++17 -Wall point.cpp
 
 # output2: prueba.o burrito.o 
 # 	g++ -o -std=c++17 -Wall prueba.o burrito.o -o output2

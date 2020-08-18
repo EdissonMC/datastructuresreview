@@ -734,6 +734,7 @@ int main () {
     std::cout << "\nPROBANDO EL OBJETO KDTree\n";
 
     KDTree myKDTree ;
+    std::cout << "\n\n\n\nesta vacio? el KDTree = " << myKDTree.empty(); 
   //  myKDTree.agregarNodos();
     // Point<3> pointTemp;
     std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
@@ -764,6 +765,36 @@ int main () {
 
     std::string resultado = (myKDTree.contains(pointTest)== true)? "si":"no";
     std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
+
+
+    std::cout << "\n Anadiendo el punto [7, 8, 9] mediante el uso del operado[point]\n";
+    pointTemp[0]=7;
+    pointTemp[1]=8;
+    pointTemp[2]=9;
+    myKDTree[pointTemp];
+    
+    
+    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
+    std::cout << myKDTree.showmeAll() <<"\n";
+
+
+    std::cout << "\n Anadiendo el punto  [7, 8, 9] de nuevo mediante el uso del operado[point]\n";
+    pointTemp[0]=7;
+    pointTemp[1]=8;
+    pointTemp[2]=9;
+    std::cout<< myKDTree[pointTemp] << "---------------\n";
+     
+    
+    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
+    std::cout << myKDTree.showmeAll() <<"\n";
+
+    std::cout << "tamano del KDTree = " << myKDTree.size(); 
+     std::cout << "esta vacio? el KDTree = " << myKDTree.empty(); 
+    
+      pointTemp[0]=1;
+    pointTemp[1]=8;
+    pointTemp[2]=9;
+     std::cout << "usan la funcion at(point) KDTree = " << myKDTree.at(pointTemp); 
 
     // PROBANDO EL OBJETO Point
     /*
