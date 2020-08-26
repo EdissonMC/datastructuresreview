@@ -30,13 +30,13 @@ struct node
 
 
 
-// template <typename ElementType>
+// temsplate <typename ElementType>
 class linked_list
 {
     private:
         node *head;
         node *tail;
-        Point<3> pt; 
+        // Point<3> pt; 
 
     public:
     
@@ -605,94 +605,94 @@ int main () {
 
 
     
-    std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
-    Point<3> pointTemp;
-    pointTemp[0]=3;
-    pointTemp[1]=1;
-    pointTemp[2]=4;
-    a.add_node(1, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
+    // Point<3> pointTemp;
+    // pointTemp[0]=3;
+    // pointTemp[1]=1;
+    // pointTemp[2]=4;
+    // a.add_node(1, pointTemp);
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 2 2 2 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=2;
-    pointTemp[1]=3;
-    pointTemp[2]=7;
-    a.add_node(2, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 2 2 2 --------------------------------------------------------- \n";
+   
+    // pointTemp[0]=2;
+    // pointTemp[1]=3;
+    // pointTemp[2]=7;
+    // a.add_node(2, pointTemp);
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 4 3 4 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=4;
-    pointTemp[1]=3;
-    pointTemp[2]=4;
-    a.add_node(3, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 4 3 4 --------------------------------------------------------- \n";
+    
+    // pointTemp[0]=4;
+    // pointTemp[1]=3;
+    // pointTemp[2]=4;
+    // a.add_node(3, pointTemp);
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 6 1 4 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=6;
-    pointTemp[1]=1;
-    pointTemp[2]=4;
-    a.add_node(4, pointTemp);
-
-
-
-    std::cout << "\n\nANDIENDO EL NUMERO 5 2 5 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=5;
-    pointTemp[1]=2;
-    pointTemp[2]=5;
-    a.add_node(5, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 6 1 4 --------------------------------------------------------- \n";
+   
+    // pointTemp[0]=6;
+    // pointTemp[1]=1;
+    // pointTemp[2]=4;
+    // a.add_node(4, pointTemp);
 
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 4 0 6 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=4;
-    pointTemp[1]=0;
-    pointTemp[2]=6;
-    a.add_node(6, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 5 2 5 --------------------------------------------------------- \n";
 
-    std::cout << "\n\nANDIENDO EL NUMERO 7 1 6 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=7;
-    pointTemp[1]=1;
-    pointTemp[2]=6;
-    a.add_node(7, pointTemp);
-
-    std::cout << "\n\nANDIENDO EL NUMERO 2 4 5 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=2;
-    pointTemp[1]=4;
-    pointTemp[2]=5;
-    a.add_node(8, pointTemp);
-
-    std::cout << "\n\nANDIENDO EL NUMERO 2 1 3 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=2;
-    pointTemp[1]=1;
-    pointTemp[2]=3;
-    a.add_node(9, pointTemp);
-
-    std::cout << "\n\nANDIENDO EL NUMERO 0 5 7 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=0;
-    pointTemp[1]=5;
-    pointTemp[2]=7;
-    a.add_node(10, pointTemp);
+    // pointTemp[0]=5;
+    // pointTemp[1]=2;
+    // pointTemp[2]=5;
+    // a.add_node(5, pointTemp);
 
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 1 4 4 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
-    pointTemp[0]=1;
-    pointTemp[1]=4;
-    pointTemp[2]=4;
-    a.add_node(11, pointTemp);
+    // std::cout << "\n\nANDIENDO EL NUMERO 4 0 6 --------------------------------------------------------- \n";
+    
+    // pointTemp[0]=4;
+    // pointTemp[1]=0;
+    // pointTemp[2]=6;
+    // a.add_node(6, pointTemp);
 
-    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
+    // std::cout << "\n\nANDIENDO EL NUMERO 7 1 6 --------------------------------------------------------- \n";
 
+    // pointTemp[0]=7;
+    // pointTemp[1]=1;
+    // pointTemp[2]=6;
+    // a.add_node(7, pointTemp);
+
+    // std::cout << "\n\nANDIENDO EL NUMERO 2 4 5 --------------------------------------------------------- \n";
+   
+    // pointTemp[0]=2;
+    // pointTemp[1]=4;
+    // pointTemp[2]=5;
+    // a.add_node(8, pointTemp);
+
+    // std::cout << "\n\nANDIENDO EL NUMERO 2 1 3 --------------------------------------------------------- \n";
+ 
+    // pointTemp[0]=2;
+    // pointTemp[1]=1;
+    // pointTemp[2]=3;
+    // a.add_node(9, pointTemp);
+
+    // std::cout << "\n\nANDIENDO EL NUMERO 0 5 7 --------------------------------------------------------- \n";
+
+    // pointTemp[0]=0;
+    // pointTemp[1]=5;
+    // pointTemp[2]=7;
+    // a.add_node(10, pointTemp);
+
+
+
+    // std::cout << "\n\nANDIENDO EL NUMERO 1 4 4 --------------------------------------------------------- \n";
+   
+    // pointTemp[0]=1;
+    // pointTemp[1]=4;
+    // pointTemp[2]=4;
+    // a.add_node(11, pointTemp);
+
+    // std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n" << a.showmeAll() <<"\n";
+    // std::cout<<"\n\n\n\n\n\n";
     
     // std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
     // Point<3> pointTest;
@@ -730,71 +730,180 @@ int main () {
     std::cout << "Resultado(6) = " << resultado ;
     */
 
+
+
    // PROBANDO EL OBJETO KDTree
     std::cout << "\nPROBANDO EL OBJETO KDTree\n";
 
-    KDTree myKDTree ;
-    std::cout << "\n\n\n\nesta vacio? el KDTree = " << myKDTree.empty(); 
-  //  myKDTree.agregarNodos();
-    // Point<3> pointTemp;
-    std::cout << "\n\nANDIENDO EL NUMERO 3 1 4 --------------------------------------------------------- \n";
-    pointTemp[0]=3;
-    pointTemp[1]=1;
-    pointTemp[2]=4;
-    myKDTree.insert(pointTemp);
+    KDTree<2, std::string> myKDTree ;
+   
+   // std::cout << "\n\n\n\nesta vacio? el KDTree = " << myKDTree.empty(); 
 
 
-    std::cout << "\n\nANDIENDO EL NUMERO 2 3 7 --------------------------------------------------------- \n";
-    //Point<3> pointTemp;
+    std::cout << "\n\nANDIENDO EL NUMERO 2, 3 -> pera --------------------------------------------------------- \n";
+    Point<2>pointTemp;
     pointTemp[0]=2;
     pointTemp[1]=3;
-    pointTemp[2]=7;
-    myKDTree.insert(pointTemp);
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2, 4 pera --------------------------------------------------------- \n";
+    pointTemp[0]=2;
+    pointTemp[1]=4;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 3, 4 pera --------------------------------------------------------- \n";
+    pointTemp[0]=3;
+    pointTemp[1]=4;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2, 5 pera --------------------------------------------------------- \n";
+    pointTemp[0]=2;
+    pointTemp[1]=5;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 3, 5 Pera --------------------------------------------------------- \n";
+    pointTemp[0]=3;
+    pointTemp[1]=5;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 2.5,  6 pera --------------------------------------------------------- \n";
+    pointTemp[0]=2.5 ;
+    pointTemp[1]=6;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 4, 6 Pera --------------------------------------------------------- \n";
+    pointTemp[0]=4;
+    pointTemp[1]=6;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 3, 6.5 Pera --------------------------------------------------------- \n";
+    pointTemp[0]=3;
+    pointTemp[1]=6.5;
+    myKDTree.insert(pointTemp, "pera");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 9, 1 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=9;
+    pointTemp[1]=1;
+    myKDTree.insert(pointTemp, "manzana");
 
 
 
-    std::cout << myKDTree.showmeAll();
+
+    std::cout << "\n\nANDIENDO EL NUMERO 11, 1 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=11;
+    pointTemp[1]=1;
+    myKDTree.insert(pointTemp, "manzana");
 
 
 
-    std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
-    Point<3> pointTest;
-    pointTest[0] = 3;
-    pointTest[1] = 2;
-    pointTest[2] = 4;
-
-    std::string resultado = (myKDTree.contains(pointTest)== true)? "si":"no";
-    std::cout << "\n\nEl punto , esta? = " << resultado ;//[2,1,3]
+    std::cout << "\n\nANDIENDO EL NUMERO 10.5, 2.5 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=10.5;
+    pointTemp[1]=2.5;
+    myKDTree.insert(pointTemp, "manzana");
+    
 
 
-    std::cout << "\n Anadiendo el punto [7, 8, 9] mediante el uso del operado[point]\n";
-    pointTemp[0]=7;
-    pointTemp[1]=8;
-    pointTemp[2]=9;
-    myKDTree[pointTemp];
+    std::cout << "\n\nANDIENDO EL NUMERO 10, 1 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=10;
+    pointTemp[1]=1;
+    myKDTree.insert(pointTemp, "manzana");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 12, 3 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=12;
+    pointTemp[1]=3;
+    myKDTree.insert(pointTemp, "manzana");
+
+
+    std::cout << "\n\nANDIENDO EL NUMERO 9.5, 2.5 manzana --------------------------------------------------------- \n";
+    pointTemp[0]=9.5;
+    pointTemp[1]=2.5;
+    myKDTree.insert(pointTemp, "manzana");
+
+
+    std::cout << myKDTree.showmeAll() <<std::endl;
+    std::cout <<"caaantidad de nodos = " << myKDTree.size() << std::endl;
+
+
+
+     Point<2> pointTest ;
+     pointTest[0] =1;
+     pointTest[1] =3;
+     std::cout <<"probaaanado el k-nn = " << myKDTree.kNNValue(pointTest,2);
     
     
-    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
-    std::cout << myKDTree.showmeAll() <<"\n";
+    // std::cout <<"probaaando si contiene el nodo (10, 1) = " << myKDTree.contains(pointTemp);
+
+    // PRUEBA CALCULO DISTANCIA
+
+    // Point<2> pointOne ;
+    // pointOne[0]= 5;
+    // pointOne[1]= 6;
+  
+    
+    // Point<2> pointTwo ;
+    // pointTwo[0]= 8 ;
+    // pointTwo[1]= 3 ;
+
+    // double myDistance = Distance(pointOne, pointTwo);
+
+    // std::cout << "distancia entre dos puntos" << myDistance;
 
 
-    std::cout << "\n Anadiendo el punto  [7, 8, 9] de nuevo mediante el uso del operado[point]\n";
-    pointTemp[0]=7;
-    pointTemp[1]=8;
-    pointTemp[2]=9;
-    std::cout<< myKDTree[pointTemp] << "---------------\n";
+    // std::cout << "\n\n CHEQUEANDO SI EL POINT [0,5,7] ESTA EN EL ARBOL \n";
+    // Point<3> pointTest;
+    // pointTest[0] = 3;
+    // pointTest[1] = 2;
+    // pointTest[2] = 4;
+
+    // std::string resultado = (myKDTree.contains(pointTest)== true)? "si":"no";
+    // std::cout << "\n\nEL PUNTO [3,2,4] , ESTA ? = " << resultado  <<"\n\n";//[2,1,3]
+
+
+    // std::cout << "\n Anadiendo el punto [7, 8, 9] mediante el uso del operado[point]\n";
+    // pointTemp[0]=7;
+    // pointTemp[1]=8;
+    // pointTemp[2]=9;
+    // myKDTree[pointTemp];
+    
+    
+    // std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
+    // std::cout << myKDTree.showmeAll() <<"\n";
+
+
+    // std::cout << "\n Anadiendo el punto  [7, 8, 9] de nuevo mediante el uso del operado[point]\n";
+    // pointTemp[0]=7;
+    // pointTemp[1]=8;
+    // pointTemp[2]=9;
+    // std::cout<< myKDTree[pointTemp] << "---------------\n";
      
     
-    std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
-    std::cout << myKDTree.showmeAll() <<"\n";
+    // std::cout << "\n\n---------- ** MOSTRANDO EL RESULTADO **  ---------------------------------------------------------\n";
+    // std::cout << myKDTree.showmeAll() <<"\n";
 
-    std::cout << "tamano del KDTree = " << myKDTree.size(); 
-     std::cout << "esta vacio? el KDTree = " << myKDTree.empty(); 
+    // std::cout << ">Tamano del KDTree = " << myKDTree.size() <<"\n\n"; 
+    // std::cout << ">Esta vacio? el KDTree = " << myKDTree.empty()<<"\n\n";  
     
-      pointTemp[0]=1;
-    pointTemp[1]=8;
-    pointTemp[2]=9;
-     std::cout << "usan la funcion at(point) KDTree = " << myKDTree.at(pointTemp); 
+    // pointTemp[0]=3;
+    // pointTemp[1]=1;
+    // pointTemp[2]=4;
+    // std::cout << "usan la funcion at(point) KDTree = " << myKDTree.at(pointTemp); 
+
+
+
+
+
+
+
+
 
     // PROBANDO EL OBJETO Point
     /*
