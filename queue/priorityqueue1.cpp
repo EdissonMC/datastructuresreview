@@ -22,7 +22,7 @@ void print_queue(T& q) {
 
 int main () {
 
-      // Using lambda to compare elements.
+    // Using lambda to compare elements.
     auto cmp = [](int left, int right) { 
         //std::cout <<left << ":" <<right <<std::endl;
         return (left ) > (right ); //^ 1
